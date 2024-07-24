@@ -12,6 +12,15 @@ class UserRepository {
 
         return userCreated;
     }
+
+    async GetUserByField(fieldName, fieldValue) {
+        const user = await UserModels.User.findOne({
+            where: {
+                [fieldName]: fieldValue
+            }
+        });
+        return user;
+    }
 }
 
 module.exports = new UserRepository();

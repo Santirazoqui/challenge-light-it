@@ -5,6 +5,9 @@ class UserLogic {
     async RegisterUser(userDTO) {
         try {
             validateUser(userDTO);
+            const userExists = await UserRepository.GetUserByField('emailAddress', userDTO.emailAddress);
+            if (userExists)
+                throw new LightItClientErrors.ForbiddenError('User already exists');
             const userCreated = await UserRepository.SaveUser(userDTO);
             return userCreated;
         } catch (error) {
