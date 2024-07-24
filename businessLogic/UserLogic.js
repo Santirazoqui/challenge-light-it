@@ -4,7 +4,7 @@ class UserLogic {
         try {
             validateUser(userDTO);
         } catch (error) {
-            console.log(error);
+            throw error;
         }
     }
 }

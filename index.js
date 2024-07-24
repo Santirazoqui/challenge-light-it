@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const userRouter = require('./webApi/userController/Router');
+const errorMiddleware = require('./webApi/middleware/errorMiddleware');
 
 dotenv.config();
 
@@ -8,7 +9,7 @@ const app = express();
 app.use(express.json());
 
 app.use(userRouter);
-
+app.use(errorMiddleware);
 
 const PORT = process.env.PORT;
 if (!PORT) {
