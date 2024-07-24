@@ -1,6 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const userRouter = require('./webApi/userController/Router');
+const Sequelize = require('sequelize');
+const MySqlDialect = require('@sequelize/mysql');
 const errorMiddleware = require('./webApi/middleware/errorMiddleware');
 
 dotenv.config();
@@ -23,3 +25,12 @@ try {
 } catch (error) {
   console.log(error)
 }
+
+const sequelize = new Sequelize({
+    dialect: 'mysql',
+    host: process.env.MySQLHOST,
+    port: process.env.MySQLPORT,
+    username: process.env.MySQLUSER,
+    password: process.env.MySQLPASSWORD,
+    database: process.env.MySQLDATABASE
+  });
