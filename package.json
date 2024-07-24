@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Santirazoqui/challenge-light-it/issues"
   },
-  "homepage": "https://github.com/Santirazoqui/challenge-light-it#readme"
+  "homepage": "https://github.com/Santirazoqui/challenge-light-it#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }
