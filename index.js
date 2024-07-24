@@ -1,6 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const userRouter = require('./webApi/userController/router');
+const userRouter = require('./webApi/userController/Router');
 
 dotenv.config();
 
