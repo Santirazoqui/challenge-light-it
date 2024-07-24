@@ -1,7 +1,6 @@
 const LightItClientErrors = require('../../lightItErrors/LightItClientErrors');
  
 const errorMiddleware = (err, req, res, next) => {
-    console.log("Middleware!");
     if(err instanceof LightItClientErrors.BadRequestError) {
         return res.status(err.statusCode).send({ message: err.message});
     }
