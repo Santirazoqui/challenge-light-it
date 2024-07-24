@@ -1,8 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const userRouter = require('./webApi/userController/Router');
-const Sequelize = require('sequelize');
-const MySqlDialect = require('@sequelize/mysql');
+const sequelize = require('./sequelize');
 const errorMiddleware = require('./webApi/middleware/errorMiddleware');
 
 dotenv.config();
@@ -26,19 +25,10 @@ try {
   console.log(error)
 }
 
-const sequelize = new Sequelize({
-    dialect: 'mysql',
-    host: process.env.MySQLHOST,
-    port: process.env.MySQLPORT,
-    username: process.env.MySQLUSER,
-    password: process.env.MySQLPASSWORD,
-    database: process.env.MySQLDATABASE
-  });
-
 async function initSequelize(){
     try{    
       await sequelize.sync();
-      console.log("Connected to sequelize.");  
+      console.log("Connected to MySQL.");  
     }
     catch(error){
       console.error("Error connecting to MySQL", error);
