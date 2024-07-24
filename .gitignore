@@ -1,11 +1,4 @@
-live
 node_modules
 build
 dist
-.env
-serviceAccount.json
-inmo2-91300-firebase-adminsdk.json
-src/firebaseConfig.json
-firebaseConfig.json
-src/firebaseConfig.json
-src/inmo2-91300-firebase-adminsdk.json
+
