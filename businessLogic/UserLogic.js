@@ -1,9 +1,12 @@
 const LightItClientErrors = require('../lightItErrors/LightItClientErrors');
+const UserRepository = require('../dataAccess/UserRepository');
 
 class UserLogic {
-    RegisterUser(userDTO) {
+    async RegisterUser(userDTO) {
         try {
             validateUser(userDTO);
+            const userCreated = await UserRepository.SaveUser(userDTO);
+            return userCreated;
         } catch (error) {
             throw error;
         }
@@ -41,7 +44,7 @@ const validatePhoneNumberRegex = /^\d{9}$/;
 function validatePhoneNumber(phoneNumber) {
     if (!phoneNumber)
         throw new LightItClientErrors.BadRequestError('Phone number is required');
-    if (!validatePhoneNumberRegex.test(email))
+    if (!validatePhoneNumberRegex.test(phoneNumber))
         throw new LightItClientErrors.BadRequestError('Phone number is invalid, must be 9 digits, no spaces or special characters');
 }
 
