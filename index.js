@@ -34,3 +34,15 @@ const sequelize = new Sequelize({
     password: process.env.MySQLPASSWORD,
     database: process.env.MySQLDATABASE
   });
+
+async function initSequelize(){
+    try{    
+      await sequelize.sync();
+      console.log("Connected to sequelize.");  
+    }
+    catch(error){
+      console.error("Error connecting to MySQL", error);
+    }
+}
+  
+initSequelize();
