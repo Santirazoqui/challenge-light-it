@@ -1,4 +1,5 @@
 const express = require('express');
+require('express-async-errors');
 const dotenv = require('dotenv');
 const userRouter = require('./webApi/userController/Router');
 const sequelize = require('./sequelize');
