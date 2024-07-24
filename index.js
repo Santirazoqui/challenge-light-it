@@ -20,7 +20,7 @@ if (!PORT) {
 
 try {
   app.listen(PORT, () => {
-    console.log(`Inmo 2 listening on port ${PORT}`);
+    console.log(`LightIt listening on port ${PORT}`);
   });
 } catch (error) {
   console.log(error)
