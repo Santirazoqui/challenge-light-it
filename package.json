@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/Santirazoqui/challenge-light-it#readme",
   "dependencies": {
+    "@sequelize/mysql": "^7.0.0-alpha.41",
     "dotenv": "^16.4.5",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "sequelize": "^6.37.3"
   }
 }
