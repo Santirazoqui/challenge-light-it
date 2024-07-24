@@ -1,0 +1,19 @@
+{
+  "name": "challenge-light-it",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Santirazoqui/challenge-light-it.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Santirazoqui/challenge-light-it/issues"
+  },
+  "homepage": "https://github.com/Santirazoqui/challenge-light-it#readme"
+}
