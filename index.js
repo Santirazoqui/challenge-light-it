@@ -1,13 +1,16 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const userRouter = require('./webApi/userController/router');
 
 dotenv.config();
 
 const app = express();
 app.use(express.json());
 
-const PORT = process.env.PORT;
+app.use(userRouter);
 
+
+const PORT = process.env.PORT;
 if (!PORT) {
   throw new Error('PORT must be set in the environment');
 }
