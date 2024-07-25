@@ -16,7 +16,7 @@ class UserLogic {
             const imageDir = saveImageAsFile(userDTO.image, userDTO.emailAddress);
             userDTO.image = imageDir;
 
-            const userCreated = await UserRepository.SaveUser(userDTO);
+            const userCreated = await UserRepository.CreateUser(userDTO);
 
             await NotifyUser(userCreated);
 

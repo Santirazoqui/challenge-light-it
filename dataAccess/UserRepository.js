@@ -2,7 +2,7 @@ const sequelize = require('sequelize');
 const UserModels = require('../models/User');
 
 class UserRepository {
-    async SaveUser(userDTO) {
+    async CreateUser(userDTO) {
         const userCreated = await UserModels.User.create({
             name: userDTO.name,
             emailAddress: userDTO.emailAddress,
