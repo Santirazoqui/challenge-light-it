@@ -3,10 +3,10 @@ const sequelize = require('../sequelize');
 const DataTypes = Sequelize.DataTypes;
 
 const User = sequelize.define('User', {
-    name: { type: DataTypes.STRING, allowNull: false},
-    emailAddress: { type: DataTypes.STRING, allowNull: false},
-    phoneNumber: { type: DataTypes.STRING, allowNull: false},
-    image: { type: DataTypes.STRING, allowNull: false}
+    name: { type: DataTypes.STRING, allowNull: false },
+    emailAddress: { type: DataTypes.STRING, allowNull: false },
+    phoneNumber: { type: DataTypes.STRING, allowNull: false },
+    image: { type: DataTypes.STRING, allowNull: false }
 });
 
 class UserDTO {

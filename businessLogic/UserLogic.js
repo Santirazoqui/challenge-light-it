@@ -19,7 +19,7 @@ class UserLogic {
             const userCreated = await UserRepository.SaveUser(userDTO);
 
             await NotifyUser(userCreated);
-            
+
             return userCreated;
         } catch (error) {
             throw error;
@@ -62,7 +62,7 @@ function validatePhoneNumber(phoneNumber) {
         throw new LightItClientErrors.BadRequestError('Phone number is invalid, must be 9 digits, no spaces or special characters');
 }
 
-function saveImageAsFile(base64Image, emailAddress){
+function saveImageAsFile(base64Image, emailAddress) {
     const buffer = Buffer.from(base64Image, 'base64');
     const imageDir = `${process.env.PatientImagesDirectory}/${emailAddress}.png`;
     fs.writeFileSync(imageDir, buffer);

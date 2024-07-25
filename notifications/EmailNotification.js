@@ -2,7 +2,7 @@ const redis = require('redis');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 
-async function EmailNotification(){
+async function EmailNotification() {
     try {
         const redisClient = redis.createClient().on("error", (error) => { throw new Error(error) });
         const emailNotificationClient = redisClient.duplicate();
@@ -10,9 +10,9 @@ async function EmailNotification(){
         emailNotificationClient.subscribe("User_Created", async (message) => {
             const user = JSON.parse(message);
             console.log(`Sending email to ${user.emailAddress}`);
-    
+
             SendMail(user);
-            
+
             console.log("\n");
         });
     } catch (error) {
@@ -20,7 +20,7 @@ async function EmailNotification(){
     }
 }
 
-function SendMail(user){
+function SendMail(user) {
     const transporter = nodemailer.createTransport({
         host: process.env.MailtrapHost,
         port: 587,
@@ -38,12 +38,12 @@ function SendMail(user){
         text: `User ${user.name} has been registered successfully!`
     };
 
-    transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-        console.log('Error:', error);
-    } else {
-        console.log('Email sent:', info.response);
-    }
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log('Error:', error);
+        } else {
+            console.log('Email sent:', info.response);
+        }
     });
 }
 
