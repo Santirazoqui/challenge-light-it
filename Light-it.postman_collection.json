@@ -14,7 +14,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"emailAddress\": \"john@gmail.com\",\r\n    \"phoneNumber\": \"012345678\",\r\n    \"image\": \"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\"\r\n}",
+					"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"emailAddress\": \"john11@gmail.com\",\r\n    \"phoneNumber\": \"012345678\",\r\n    \"image\": \"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\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -22,7 +22,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/register",
+					"raw": "http://localhost:3000/api/user",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -30,7 +30,7 @@
 					"port": "3000",
 					"path": [
 						"api",
-						"register"
+						"user"
 					]
 				}
 			},
@@ -51,7 +51,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/register",
+					"raw": "http://localhost:3000/api/user",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -59,7 +59,7 @@
 					"port": "3000",
 					"path": [
 						"api",
-						"register"
+						"user"
 					]
 				}
 			},
@@ -80,7 +80,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/register",
+					"raw": "http://localhost:3000/api/user",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -88,7 +88,7 @@
 					"port": "3000",
 					"path": [
 						"api",
-						"register"
+						"user"
 					]
 				}
 			},
@@ -109,7 +109,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/register",
+					"raw": "http://localhost:3000/api/user",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -117,7 +117,7 @@
 					"port": "3000",
 					"path": [
 						"api",
-						"register"
+						"user"
 					]
 				}
 			},
