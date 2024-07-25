@@ -5,7 +5,7 @@ const errorMiddleware = (err, req, res, next) => {
         return res.status(err.statusCode).send({ message: err.message});
     }
 
-    console.error(JSON.stringify(err, null, 2));
+    console.log(err);
     return res.status(500).send({message: "Internal server error" });
 };
 
