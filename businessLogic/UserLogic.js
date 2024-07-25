@@ -70,10 +70,13 @@ function saveImageAsFile(base64Image, emailAddress) {
 }
 
 async function NotifyUser(user) {
-    const redisClient = redis.createClient().on("error", (error) => { throw new Error(error) });
-    await redisClient.connect();
-    await redisClient.publish("User_Created", JSON.stringify(user));
-    await redisClient.disconnect();
+    try {
+        const redisClient = redis.createClient().on("error", (error) => { throw new Error(error) });
+        await redisClient.connect();
+        await redisClient.publish("User_Created", JSON.stringify(user));
+    } finally {
+        await redisClient.disconnect();
+    }
 }
 
 module.exports = new UserLogic();
