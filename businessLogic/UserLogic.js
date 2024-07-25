@@ -36,13 +36,13 @@ function validateUser(userDTO) {
 
 }
 
-const ValidateUserRegex = /^[A-Za-z]+(?: [A-Za-z]+)*$/;
+const ValidateUserNameRegex = /^[A-Za-z]+(?: [A-Za-z]+)*$/;
 function valideUserName(name) {
     if (!name)
         throw new LightItClientErrors.BadRequestError('Name is required');
     if (name.length < 3)
         throw new LightItClientErrors.BadRequestError('Name is too short, minium 3 characters');
-    if (!ValidateUserRegex.test(name))
+    if (!ValidateUserNameRegex.test(name))
         throw new LightItClientErrors.BadRequestError('Name is invalid, no special characters allowed');
 }
 
