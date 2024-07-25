@@ -3,6 +3,8 @@ const UserRepository = require('../dataAccess/UserRepository');
 const Buffer = require('buffer').Buffer;
 const fs = require('fs');
 require('dotenv').config();
+const redis = require('redis');
+
 class UserLogic {
     async RegisterUser(userDTO) {
         try {
@@ -10,9 +12,14 @@ class UserLogic {
             const userExists = await UserRepository.GetUserByField('emailAddress', userDTO.emailAddress);
             if (userExists)
                 throw new LightItClientErrors.ForbiddenError('User already exists');
+
             const imageDir = saveImageAsFile(userDTO.image, userDTO.emailAddress);
             userDTO.image = imageDir;
+
             const userCreated = await UserRepository.SaveUser(userDTO);
+
+            await NotifyUser(userCreated);
+            
             return userCreated;
         } catch (error) {
             throw error;
@@ -60,6 +67,13 @@ function saveImageAsFile(base64Image, emailAddress){
     const imageDir = `${process.env.PatientImagesDirectory}/${emailAddress}.png`;
     fs.writeFileSync(imageDir, buffer);
     return imageDir;
+}
+
+async function NotifyUser(user) {
+    const redisClient = redis.createClient().on("error", (error) => { throw new Error(error) });
+    await redisClient.connect();
+    await redisClient.publish("User_Created", JSON.stringify(user));
+    await redisClient.disconnect();
 }
 
 module.exports = new UserLogic();
