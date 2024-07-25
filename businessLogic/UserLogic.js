@@ -1,6 +1,8 @@
 const LightItClientErrors = require('../lightItErrors/LightItClientErrors');
 const UserRepository = require('../dataAccess/UserRepository');
-
+const Buffer = require('buffer').Buffer;
+const fs = require('fs');
+require('dotenv').config();
 class UserLogic {
     async RegisterUser(userDTO) {
         try {
@@ -8,6 +10,8 @@ class UserLogic {
             const userExists = await UserRepository.GetUserByField('emailAddress', userDTO.emailAddress);
             if (userExists)
                 throw new LightItClientErrors.ForbiddenError('User already exists');
+            const imageDir = saveImageAsFile(userDTO.image, userDTO.emailAddress);
+            userDTO.image = imageDir;
             const userCreated = await UserRepository.SaveUser(userDTO);
             return userCreated;
         } catch (error) {
@@ -49,6 +53,13 @@ function validatePhoneNumber(phoneNumber) {
         throw new LightItClientErrors.BadRequestError('Phone number is required');
     if (!validatePhoneNumberRegex.test(phoneNumber))
         throw new LightItClientErrors.BadRequestError('Phone number is invalid, must be 9 digits, no spaces or special characters');
+}
+
+function saveImageAsFile(base64Image, emailAddress){
+    const buffer = Buffer.from(base64Image, 'base64');
+    const imageDir = `${process.env.PatientImagesDirectory}/${emailAddress}.png`;
+    fs.writeFileSync(imageDir, buffer);
+    return imageDir;
 }
 
 module.exports = new UserLogic();
