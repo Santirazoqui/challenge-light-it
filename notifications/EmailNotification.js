@@ -1,5 +1,6 @@
 const redis = require('redis');
 const nodemailer = require('nodemailer');
+require('dotenv').config();
 
 async function EmailNotification(){
     try {
@@ -21,12 +22,12 @@ async function EmailNotification(){
 
 function SendMail(user){
     const transporter = nodemailer.createTransport({
-        host: 'sandbox.smtp.mailtrap.io',
+        host: process.env.MailtrapHost,
         port: 587,
         secure: false,
         auth: {
-            user: '72ac2ad1e5e12e',
-            pass: 'a78d3399912c3e',
+            user: process.env.MailtrapUser,
+            pass: process.env.MailtrapPassword,
         }
     });
 
