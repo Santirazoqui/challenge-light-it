@@ -32,7 +32,7 @@ function SendMail(user) {
     });
 
     const mailOptions = {
-        from: 'irazoqui.santi@outlook.com',
+        from: 'realmail@outlook.com',
         to: `${user.emailAddress}`,
         subject: 'User registration confirmed',
         text: `User ${user.name} has been registered successfully!`
